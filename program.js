@@ -1,9 +1,9 @@
-var total = 0;
+// get the file system
+var fs = require("fs");
 
-for (i = 0; i < process.argv.length; i++) {
-    if (i > 1) {
-        total = total + Number(process.argv[i]);
-    }
-}
+// get the specified file
+var file = fs.readFileSync(process.argv[2]).toString();
 
-console.log(total);
+var numberOfLines = file.split("\n").length - 1;
+
+console.log(numberOfLines);
