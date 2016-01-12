@@ -1,9 +1,15 @@
 // get the file system
 var fs = require("fs");
 
-// get the specified file
-var file = fs.readFileSync(process.argv[2]).toString();
+// read the passed parameter, fire function once it's read
+fs.readFile(process.argv[2], function finishedReading(error, userFile) {
+    
+    // throw an error if there is on
+    if (error) return console.error(error)
+    
+    // count the number of lines in the specified file
+    var numberOfLines = userFile.toString().split("\n").length - 1;
 
-var numberOfLines = file.split("\n").length - 1;
-
-console.log(numberOfLines);
+    // return the number of specified lines
+    console.log(numberOfLines);
+})
